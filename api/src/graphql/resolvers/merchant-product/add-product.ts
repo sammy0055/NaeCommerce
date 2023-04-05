@@ -13,13 +13,19 @@ export const addProduct = (merchantPtofile: SubResolverArgs) => {
     );
     try {
       // if (!storeId) throw new Error("store does not exist");
-      const result = await ProductModel.create({ ...product.data, storeId:product.storeId });
-      const Product = await result.populate("storeId", "currency");
-      
-      console.log('====================================');
-      console.log(Product);
-      console.log('====================================');
-      Result.Success
+      const result = await ProductModel.create({
+        ...product.data,
+        storeId: product.storeId,
+      });
+      const { storeId, ...rest } = await result.populate("storeId", "name");
+      const data = {
+        currency: storeId.name,
+        data: { ...rest._doc },
+      };
+      console.log("====================================");
+      console.log(data);
+      console.log("====================================");
+      return data;
     } catch (error: any) {
       logger(error);
     }

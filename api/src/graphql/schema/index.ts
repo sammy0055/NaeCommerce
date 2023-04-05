@@ -67,16 +67,16 @@ enum ResponseStatus {
   }
 
   type ProductData {
-    _id: UniqueID,
+    _id: UniqueID!,
     attributes: [AttributeSet]
-    price: Float
+    price: Float!
     inStock: Boolean
     ${Product}
   }
 
   type Product {
-    currency: Currency
-    data: ProductData
+    currency: Currency!
+    data: ProductData!
   }
 
   type Category {
@@ -143,7 +143,7 @@ enum ResponseStatus {
   }
 
   type MerchantModeMutation {
-    addProduct(product: ProductInput!): ResponseStatus #Product
+    addProduct(product: ProductInput!): Product
   }
 
   type Query {
