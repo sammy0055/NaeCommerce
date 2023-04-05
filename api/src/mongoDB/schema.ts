@@ -17,7 +17,7 @@ const MerchantProfileSchema: Schema = new Schema<IMerchantProfile>({
   lastName: { type: String, required: false },
   productTypes: { type: [String], required: false },
   address: { type: Address, required: false },
-  storesId:{type:[Schema.Types.ObjectId], required:false, default:[]}
+  storesId: { type: [Schema.Types.ObjectId], required: false, default: [] },
 });
 
 const StoreSchema: Schema = new Schema<IStore>({
@@ -28,7 +28,13 @@ const StoreSchema: Schema = new Schema<IStore>({
   },
   name: { type: String, required: true },
   region: { type: String, required: true },
-  currency:{ type: String, required: true }
+  currency: {
+    type: new Schema({
+      label: { type: String, required: true },
+      synbol: { type: String, required: true },
+    }),
+    required: true,
+  },
 });
 
 const Attribute = new Schema({

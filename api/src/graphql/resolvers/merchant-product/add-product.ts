@@ -1,4 +1,4 @@
-import { StoreModel } from "../../../mongoDB/schema";
+import { ProductModel, StoreModel } from "../../../mongoDB/schema";
 import { Product, Result, SubResolverArgs } from "../../../types";
 import { logger } from "../../../utils/logger";
 
@@ -12,8 +12,14 @@ export const addProduct = (merchantPtofile: SubResolverArgs) => {
       (item) => item === product.storeId
     );
     try {
-      if (!storeId) throw new Error("store does not exist");
-      return await StoreModel.create({ ...product.data, storeId });
+      // if (!storeId) throw new Error("store does not exist");
+      const result = await ProductModel.create({ ...product.data, storeId:product.storeId });
+      const Product = await result.populate("storeId", "currency");
+      
+      console.log('====================================');
+      console.log(Product);
+      console.log('====================================');
+      Result.Success
     } catch (error: any) {
       logger(error);
     }

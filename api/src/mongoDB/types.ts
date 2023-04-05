@@ -23,7 +23,7 @@ interface IStore extends Document {
   MerchantProfileId: ObjectId;
   name: string;
   region: string;
-  currency: string;
+  currency: { label: string; symbol: string };
 }
 
 interface Attribute extends Document {
