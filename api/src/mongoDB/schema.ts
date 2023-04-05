@@ -63,6 +63,7 @@ const ProductSchema: Schema = new Schema<IProduct>({
   },
   price: { type: Number, required: false },
   brand: { type: String, required: false },
+  productHash:{ type: String, required: true }
 });
 
 const ProductCategorySchema = new Schema({

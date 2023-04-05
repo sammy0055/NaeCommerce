@@ -45,6 +45,7 @@ interface IProduct extends Document {
   };
   price: number;
   brand: string;
+  productHash: string;
 }
 
 export { IMerchantProfile, IStore, Address, IProduct };

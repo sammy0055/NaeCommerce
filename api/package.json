@@ -13,6 +13,7 @@
     "dev": "nodemon src/app.ts"
   },
   "devDependencies": {
+    "@types/crypto-js": "^4.1.1",
     "@types/jest": "^29.4.0",
     "@types/mongoose": "^5.11.97",
     "@types/node": "^18.11.18",
@@ -35,6 +36,7 @@
     "apollo-server-lambda": "^3.12.0",
     "aws-jwt-verify": "^4.0.0",
     "aws-sdk": "^2.1368.0",
+    "crypto-js": "^4.1.1",
     "dotenv": "^16.0.3",
     "graphql": "^16.6.0",
     "mongoose": "^7.0.3",
