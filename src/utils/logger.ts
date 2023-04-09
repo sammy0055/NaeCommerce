@@ -4,7 +4,7 @@ import { errorTypes } from "../types";
 
 export const logger = (error: errorTypes) => {
   const _error = cognitoErrors(error?.code);
-  console.error(error.message);
+  console.error({code:error?.code, message:error.message});
   throw new GraphQLError(_error.message, {
     extensions: {
       code: error.code,
