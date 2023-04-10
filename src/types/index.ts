@@ -1,6 +1,6 @@
 export enum Result {
   Success = "SUCCESS",
-  Fail = "FAIL",
+  Fail = "FAILED",
 }
 
 export type errorTypes = {

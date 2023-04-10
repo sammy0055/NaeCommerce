@@ -136,9 +136,7 @@ enum ResponseStatus {
   }
 
   input ProductInput {
-    attributes: [AttributeSetInput]
-    prices: [PriceInput!]!
-    ${Product}
+    id:String
   }
 
   type Query {
@@ -156,7 +154,7 @@ enum ResponseStatus {
     resendEmailConfirmationCode(userName: String): ResponseStatus
     forgotPassword(userName: String): ResponseStatus
     merchantProfile(merchantProfile: MerchantProfileInput): ResponseStatus
-    addProduct(product: ProductInput!): Product
+    addProduct(product: ProductInput!): ResponseStatus
   }
 `;
 
