@@ -1,4 +1,4 @@
-const Address = `
+const AddressFields = `
 street:String
 city:String
 state:String
@@ -6,23 +6,33 @@ country:String
 zipCode:String
 `;
 
-const MerchantProfile = `
+const MerchantProfileFields = `
 firstName:String
 lastName:String
 productTypes:[String]
 `;
 
-const Attribute = `
+const CurrencyFields = `
+label:String
+symbol:String
+`
+
+const MerchantStoreFields = `
+name:String
+region:String
+`
+
+const AttributeFields = `
 displayValue: String
 value: String
 `;
 
-const AttributeSet = `
+const AttributeSetFields = `
 name: String
 type: String
 `;
 
-const Product = `
+const ProductFields = `
 title: String!
 description: String!
 category: String!
@@ -65,13 +75,13 @@ enum RegistrationSteps {
 
   type Attribute {
    _id: String!
-    ${Attribute}
+    ${AttributeFields}
   }
 
   type AttributeSet {
     _id: String!
     items: [Attribute]
-    ${AttributeSet}
+    ${AttributeSetFields}
   }
 
   type ProductData {
@@ -80,7 +90,7 @@ enum RegistrationSteps {
     price: Float!
     gallery: [String]
     inStock: Boolean
-    ${Product}
+    ${ProductFields}
   }
 
   type Product {
@@ -118,13 +128,13 @@ enum RegistrationSteps {
   }
 
   input AddressInput {
-    ${Address}
+    ${AddressFields}
   }
 
   input MerchantProfileInput {
     address:AddressInput
     registrationStep: RegistrationSteps
-    ${MerchantProfile}
+    ${MerchantProfileFields}
   }
 
   input CurrencyInput {
@@ -133,12 +143,12 @@ enum RegistrationSteps {
   }
 
   input AttributeInput {
-    ${Attribute}
+    ${AttributeFields}
   }
 
   input AttributeSetInput {
     items: [AttributeInput]
-    ${AttributeSet}
+    ${AttributeSetFields}
   }
 
   input ProductInput {
@@ -149,13 +159,22 @@ enum RegistrationSteps {
   input ProductDataInput {
     attributes: [AttributeSetInput]
     price: Float!
-    ${Product}
+    ${ProductFields}
   }
 
   input ProductFiltersInput {
     title: String
     category: String
     price: Float
+  }
+
+  input CurrencyInput {
+    ${CurrencyFields}
+  }
+
+  input merchantStoreInput {
+    currency: CurrencyInput
+    ${MerchantStoreFields}
   }
 
   type MerchantModeMutation {
