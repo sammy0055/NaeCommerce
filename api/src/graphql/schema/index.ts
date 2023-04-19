@@ -143,6 +143,12 @@ enum ResponseStatus {
     ${Product}
   }
 
+  input ProductFiltersInput {
+    title: String
+    category: String
+    price: Float
+  }
+
   type MerchantModeMutation {
     addProduct(product: ProductInput!): Product
     updateOneProduct(_id:UniqueID!, data: ProductDataInput!): Product
@@ -154,6 +160,7 @@ enum ResponseStatus {
     categories: [Category],
     category(input: CategoryInput): Category
     product(_id: UniqueID!): Product
+    products(filters: ProductFiltersInput): [ProductData]
     currencies: [Currency]
   }
 

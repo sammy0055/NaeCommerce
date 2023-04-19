@@ -8,11 +8,12 @@ import { create_merchant_store } from "./setup-merchant-store";
 import { sign_in } from "./auth/sign-in";
 import { sign_up } from "./auth/sign-up";
 import { verify_email } from "./auth/verify-email";
-import { product } from "./query-product";
+import { product, products } from "./query-product";
 
 const Query = {
   books: () => books,
   product: product,
+  products:products
 };
 
 const Mutation = {
