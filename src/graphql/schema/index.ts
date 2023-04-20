@@ -24,13 +24,12 @@ type: String
 `;
 
 const Product = `
-id: String!
 name: String!
 inStock: Boolean
 gallery: [String]
 description: String!
 category: String!
-brand: String!
+brand: String
 `;
 
 const inputFields = (fieldsSpec: string): string =>
@@ -74,7 +73,7 @@ enum ResponseStatus {
   type Product {
     _id: String!,
     attributes: [AttributeSet]
-    prices: [Price!]!
+    price: Price!
     ${Product}
   }
 
@@ -136,7 +135,9 @@ enum ResponseStatus {
   }
 
   input ProductInput {
-    id:String
+    attributes: [AttributeSetInput]
+    price: PriceInput!
+    ${Product}
   }
 
   type Query {
@@ -154,7 +155,7 @@ enum ResponseStatus {
     resendEmailConfirmationCode(userName: String): ResponseStatus
     forgotPassword(userName: String): ResponseStatus
     merchantProfile(merchantProfile: MerchantProfileInput): ResponseStatus
-    addProduct(product: ProductInput!): ResponseStatus
+    addProduct(product: ProductInput!): Product
   }
 `;
 
