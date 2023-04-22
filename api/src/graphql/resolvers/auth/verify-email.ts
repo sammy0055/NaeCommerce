@@ -1,5 +1,5 @@
-import { confirmRegistration } from "../../services/authentication/confirm-registration";
-import { logger } from "../../utils/logger";
+import { confirmRegistration } from "../../../services/authentication/confirm-registration";
+import { logger } from "../../../utils/logger";
 
 type verifyEmail = {
   verificationData: {

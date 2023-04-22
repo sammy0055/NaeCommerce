@@ -1,13 +1,13 @@
 import books from "../../data/book";
 import { uniqueIDScalar } from "../Scalars";
-import { forgot_password } from "./forgot-password";
+import { forgot_password } from "./auth/forgot-password";
 import { merchant_mode_parent_resolver } from "./mode/merchant-mode";
-import { resend_confirmationCode } from "./send-email-verificationCode";
+import { resend_confirmationCode } from "./auth/send-email-verificationCode";
 import { create_merchant_profile } from "./setup-merchant-profile";
 import { create_merchant_store } from "./setup-merchant-store";
-import { sign_in } from "./sign-in";
-import { sign_up } from "./sign-up";
-import { verify_email } from "./verify-email";
+import { sign_in } from "./auth/sign-in";
+import { sign_up } from "./auth/sign-up";
+import { verify_email } from "./auth/verify-email";
 
 const Query = {
   books: () => books,

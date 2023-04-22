@@ -1,6 +1,6 @@
-import { resendEmailConfirmationCode } from "../../services/authentication/confirm-registration";
-import { Result } from "../../types";
-import { logger } from "../../utils/logger";
+import { resendEmailConfirmationCode } from "../../../services/authentication/confirm-registration";
+import { Result } from "../../../types";
+import { logger } from "../../../utils/logger";
 
 type ConfirmationCode = {
   userName: string;

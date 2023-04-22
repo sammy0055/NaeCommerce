@@ -1,7 +1,7 @@
-import { MarchantProfileModel } from "../../mongoDB/schema";
-import { signUp } from "../../services/authentication/register";
-import { Result, signUpType } from "../../types";
-import { logger } from "../../utils/logger";
+import { MarchantProfileModel } from "../../../mongoDB/schema";
+import { signUp } from "../../../services/authentication/register";
+import { Result, signUpType } from "../../../types";
+import { logger } from "../../../utils/logger";
 
 interface signUpTypes {
   data: signUpType;

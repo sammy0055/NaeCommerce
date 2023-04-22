@@ -1,9 +1,9 @@
-import { forgotPassword } from "../../services/authentication/change-user-password";
-import { Result } from "../../types";
-import { logger } from "../../utils/logger";
+import { forgotPassword } from "../../../services/authentication/change-user-password";
+import { Result } from "../../../types";
+import { logger } from "../../../utils/logger";
 
 type forgotPassword = {
-    userName: string;
+  userName: string;
 };
 
 export const forgot_password = async (

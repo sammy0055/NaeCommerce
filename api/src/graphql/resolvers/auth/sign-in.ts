@@ -1,6 +1,6 @@
-import { login } from "../../services/authentication/login";
-import { authenticationData, userAuthAccessDetails } from "../../types";
-import { logger } from "../../utils/logger";
+import { login } from "../../../services/authentication/login";
+import { authenticationData, userAuthAccessDetails } from "../../../types";
+import { logger } from "../../../utils/logger";
 
 type Login = {
   authenticationData: authenticationData;
