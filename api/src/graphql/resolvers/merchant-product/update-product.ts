@@ -15,8 +15,8 @@ export const updateOneProduct = () => {
         { _id },
         {
           $set: data,
-          returnDocument: "after",
-        }
+        },
+        { new: true }
       ).populate(storeIdPopulate.path, storeIdPopulate.currency);
       if (!Product) throw new Error("product doesn't exist");
       return {
