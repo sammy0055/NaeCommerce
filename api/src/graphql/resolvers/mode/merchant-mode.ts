@@ -3,6 +3,7 @@ import { IMerchantProfile } from "../../../mongoDB/types";
 import { SubResolverArgs, contextDetails } from "../../../types";
 import { logger } from "../../../utils/logger";
 import { addProduct } from "../merchant-product/add-product";
+import { deleteOneProduct } from "../merchant-product/delete-produt";
 import { updateOneProduct } from "../merchant-product/update-product";
 
 const validateMerchant = (
@@ -32,6 +33,7 @@ export const merchant_mode_parent_resolver = validateMerchant(
     return {
       addProduct: addProduct(merchantProfile),
       updateOneProduct: updateOneProduct(),
+      deleteOneProduct: deleteOneProduct(),
     };
   }
 );

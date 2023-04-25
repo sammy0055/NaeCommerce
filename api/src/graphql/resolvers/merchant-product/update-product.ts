@@ -11,7 +11,7 @@ type ProductData = {
 export const updateOneProduct = () => {
   return async ({ _id, data }: ProductData) => {
     try {
-      const Product = await ProductModel.findOneAndUpdate(
+      const Product = await ProductModel.findByIdAndUpdate(
         { _id },
         {
           $set: data,

@@ -146,6 +146,7 @@ enum ResponseStatus {
   type MerchantModeMutation {
     addProduct(product: ProductInput!): Product
     updateOneProduct(_id:UniqueID!, data: ProductDataInput!): Product
+    deleteOneProduct(_id: UniqueID!): ResponseStatus
   }
 
   type Query {
