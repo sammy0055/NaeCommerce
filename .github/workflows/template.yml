@@ -4,7 +4,7 @@
 name: Node CI
 
 on:
-  [pull, push]:
+  [pull_request, push]:
     branches: ["main"]
 
 env:
