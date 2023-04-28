@@ -36,7 +36,7 @@ jobs:
         # sam build
       - run: sam build
       # run unit test
-      - run: npm ci
+      - run: yarn ci
       # - run: npm test
       # sam deploy
       - run: sam deploy --no-fail-on-empty-changeset --resolve-s3 --stack-name Naecommerce --capabilities CAPABILITY_IAM --config-env ${{ env.BRANCH_NAME }} --parameter-overrides Environment=${{ env.BRANCH_NAME }}
