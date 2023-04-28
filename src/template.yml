@@ -1,0 +1,28 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  lambda-test
+Globals:
+  Function:
+    Timeout: 30
+    MemorySize: 128
+
+Resources:
+  NaeCommerce:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: build/handler.lambdaHandler
+      Runtime: nodejs16.x
+      Architectures:
+        - x86_64
+      Events:
+         Api:
+          Type: HttpApi
+          Properties:
+            Path: /
+            Method: get
+
+Outputs:
+  ApiUrl:
+    Description: "API gateway for fun"
+    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello"

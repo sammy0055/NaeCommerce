@@ -1,11 +1,15 @@
 import { ApolloServer } from "apollo-server";
+import {
+  startServerAndCreateLambdaHandler,
+  handlers,
+} from '@as-integrations/aws-lambda';
 import "dotenv/config";
 import typeDefs from "./graphql/schema";
 import resolvers from "./graphql/resolvers";
 import connectDB from "./mongoDB";
 import { verifyAccessToken } from "./services/authentication/verify-access-token";
 
-const server = new ApolloServer({
+export const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: async ({ req }) => ({
@@ -16,6 +20,12 @@ const server = new ApolloServer({
     },
   }),
 });
+
+// export const handler = startServerAndCreateLambdaHandler(
+//   server as any,
+//   handlers.createAPIGatewayProxyEventV2RequestHandler(),
+// );
+
 
 const runServer = async () => {
   const { url } = await server.listen(4000);
