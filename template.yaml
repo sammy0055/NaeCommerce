@@ -1,7 +1,7 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: >
-  lambda-test
+  NaeCommerce
 Globals:
   Function:
     Timeout: 30
@@ -11,7 +11,7 @@ Resources:
   NaeCommerce:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: build/handler.lambdaHandler
+      Handler: build/handler.graphqlHandler
       Runtime: nodejs16.x
       Architectures:
         - x86_64
@@ -19,8 +19,8 @@ Resources:
          Api:
           Type: HttpApi
           Properties:
-            Path: /
-            Method: get
+            Path: /graphql
+            Method: post
 
 Outputs:
   ApiUrl:

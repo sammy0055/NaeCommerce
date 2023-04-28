@@ -1,0 +1,42 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Node CI
+
+on:
+  pull:
+    branches: ["main"]
+
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+  AWS_REGION: eu-west-1
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  test_psh_request:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "npm"
+        # Configure AWS SAM CLI and AWS Credentials
+      - uses: aws-actions/setup-sam@v2
+      - uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: arn:aws:iam::104730407992:role/github_action_ci_test
+          role-session-name: aws-sam-template-node-ts-github-actions
+          aws-region: ${{ env.AWS_REGION }}
+        # sam build
+      - run: sam build
+      # run unit test
+      - run: npm ci
+      # - run: npm test
+      # sam deploy
+      - run: sam deploy --no-fail-on-empty-changeset --resolve-s3 --stack-name Naecommerce --capabilities CAPABILITY_IAM --config-env ${{ env.BRANCH_NAME }} --parameter-overrides Environment=${{ env.BRANCH_NAME }}
