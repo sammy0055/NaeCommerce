@@ -1,2 +1,2 @@
 # NaeCommerce
-A SaaS application for e-commerce
+A SaaS application for e-commerce store
