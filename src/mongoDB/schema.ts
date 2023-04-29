@@ -43,7 +43,7 @@ const ProductSchema: Schema = new Schema<IProduct>({
     ref: "Store",
     required: true,
   },
-  name: { type: String, required: true },
+  title: { type: String, required: true },
   inStock: { type: Boolean, required: true },
   gallery: { type: [String], required: true },
   description: { type: String, required: true },

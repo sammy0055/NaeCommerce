@@ -24,7 +24,7 @@ type: String
 `;
 
 const Product = `
-name: String!
+title: String!
 inStock: Boolean
 gallery: [String]
 description: String!
