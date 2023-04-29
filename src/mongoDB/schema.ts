@@ -38,11 +38,11 @@ const ProductSchema: Schema = new Schema<IProduct>({
     ref: "Store",
     required: true,
   },
-  title: { type: String, required: true },
-  inStock: { type: Boolean, required: true },
-  gallery: { type: [String], required: true },
-  description: { type: String, required: true },
-  category: { type: String, required: true },
+  title: { type: String, required: false },
+  inStock: { type: Boolean, required: false },
+  gallery: { type: [String], required: false },
+  description: { type: String, required: false },
+  category: { type: String, required: false },
   attributes: {
     type: new Schema({
       name: String,
@@ -51,7 +51,7 @@ const ProductSchema: Schema = new Schema<IProduct>({
     }),
     required: false,
   },
-  price: { type: Number, required: true },
+  price: { type: Number, required: false },
   brand: { type: String, required: false },
 });
 
