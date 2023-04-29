@@ -27,7 +27,7 @@ export const addProduct = (merchantPtofile: SubResolverArgs) => {
       });
       const Product = await result.populate(
         storeIdPopulate.path,
-        storeIdPopulate.path
+        storeIdPopulate.currency
       );
       return {
         currency: Product.storeId.currency,

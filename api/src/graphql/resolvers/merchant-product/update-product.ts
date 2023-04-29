@@ -11,18 +11,18 @@ type ProductData = {
 export const updateOneProduct = () => {
   return async ({ _id, data }: ProductData) => {
     try {
-      const result = await ProductModel.findOneAndUpdate(
+      const Product = await ProductModel.findOneAndUpdate(
         { _id },
         {
           $set: data,
           returnDocument: "after",
         }
-      ).populate(storeIdPopulate.path, storeIdPopulate.path);
-      console.log("====================================");
-      console.log(result);
-      console.log("====================================");
-      if (!result) throw new Error("product doesn't exist");
-      return { result };
+      ).populate(storeIdPopulate.path, storeIdPopulate.currency);
+      if (!Product) throw new Error("product doesn't exist");
+      return {
+        currency: Product.storeId.currency,
+        data: Product,
+      };
     } catch (error: any) {
       logger(error);
     }
