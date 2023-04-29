@@ -32,11 +32,6 @@ const Attribute = new Schema({
   value: { type: String, required: false },
 });
 
-const Price = new Schema({
-  currency: { type: String, required: true },
-  amount: { type: Number, required: true },
-});
-
 const ProductSchema: Schema = new Schema<IProduct>({
   storeId: {
     type: Schema.Types.ObjectId,
@@ -56,7 +51,7 @@ const ProductSchema: Schema = new Schema<IProduct>({
     }),
     required: false,
   },
-  prices: { type: [Price], required: true },
+  price: { type: Number, required: true },
   brand: { type: String, required: false },
 });
 

@@ -30,11 +30,6 @@ interface Attribute extends Document {
   value: string;
 }
 
-interface Price extends Document {
-  currency: string;
-  amount: number;
-}
-
 interface IProduct extends Document {
   storeId: ObjectId;
   title: string;
@@ -47,7 +42,7 @@ interface IProduct extends Document {
     type: string;
     items: Attribute[];
   };
-  prices: Price[];
+  price: number;
   brand: string;
 }
 
