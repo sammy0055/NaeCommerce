@@ -36,7 +36,7 @@ interface Price extends Document {
 }
 
 interface IProduct extends Document {
-  ownerId: ObjectId;
+  storeId: ObjectId;
   name: string;
   inStock: boolean;
   gallery: string[];

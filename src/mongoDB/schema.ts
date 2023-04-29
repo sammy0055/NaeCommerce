@@ -38,9 +38,9 @@ const Price = new Schema({
 });
 
 const ProductSchema: Schema = new Schema<IProduct>({
-  ownerId: {
+  storeId: {
     type: Schema.Types.ObjectId,
-    ref: "MerchantProfile",
+    ref: "Store",
     required: true,
   },
   name: { type: String, required: true },
