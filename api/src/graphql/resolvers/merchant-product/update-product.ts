@@ -1,3 +1,4 @@
+import { storeIdPopulate } from "../../../data/populate-data";
 import { ProductModel } from "../../../mongoDB/schema";
 import { ObjectId } from "../../../mongoDB/types";
 import { Product } from "../../../types";
@@ -13,15 +14,15 @@ export const updateOneProduct = () => {
       const result = await ProductModel.findOneAndUpdate(
         { _id },
         {
-            $set: data,
+          $set: data,
           returnDocument: "after",
         }
-      ).populate("storeId", "currency");
+      ).populate(storeIdPopulate.path, storeIdPopulate.path);
       console.log("====================================");
       console.log(result);
-        console.log("====================================");
-        if(!result) throw new Error("product doesn't exist");
-      return result;
+      console.log("====================================");
+      if (!result) throw new Error("product doesn't exist");
+      return { result };
     } catch (error: any) {
       logger(error);
     }

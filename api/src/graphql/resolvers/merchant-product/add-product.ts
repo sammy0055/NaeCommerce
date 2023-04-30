@@ -3,6 +3,7 @@ import { Product, SubResolverArgs } from "../../../types";
 import { logger } from "../../../utils/logger";
 import sha256 from "crypto-js/sha256";
 import Base64 from "crypto-js/enc-base64";
+import { storeIdPopulate } from "../../../data/populate-data";
 
 interface ProductArgs {
   product: Product;
@@ -24,7 +25,10 @@ export const addProduct = (merchantPtofile: SubResolverArgs) => {
         storeId: product.storeId,
         productHash,
       });
-      const Product = await result.populate("storeId", "currency");
+      const Product = await result.populate(
+        storeIdPopulate.path,
+        storeIdPopulate.path
+      );
       return {
         currency: Product.storeId.currency,
         data: Product,
