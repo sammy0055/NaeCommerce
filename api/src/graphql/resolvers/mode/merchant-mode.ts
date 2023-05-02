@@ -3,6 +3,7 @@ import { IMerchantProfile } from "../../../mongoDB/types";
 import { SubResolverArgs, contextDetails } from "../../../types";
 import { logger } from "../../../utils/logger";
 import { addProduct } from "../merchant-product/add-product";
+import { updateOneProduct } from "../merchant-product/update-product";
 
 const validateMerchant = (
   resolver: (merchantProfile: SubResolverArgs) => unknown
@@ -30,6 +31,7 @@ export const merchant_mode_parent_resolver = validateMerchant(
   async (merchantProfile) => {
     return {
       addProduct: addProduct(merchantProfile),
+      updateOneProduct: updateOneProduct(),
     };
   }
 );
