@@ -8,6 +8,11 @@ interface Address {
   country: string;
   zipCode: string;
 }
+
+interface timestamps {
+  createdAt: Date;
+  updatedAt: Date;
+}
 interface IMerchantProfile extends Document {
   _id: ObjectId;
   sub: string;
