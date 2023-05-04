@@ -14,7 +14,7 @@ export const addProduct = (merchantPtofile: SubResolverArgs) => {
       (item) => item === product.storeId
     );
     try {
-      if (!storeId) throw new Error("merchant store doesn't exist");
+      if (!storeId) throw new Error("merchant store doesn't exist, ps");
       const productHash = Base64.stringify(sha256(JSON.stringify(product)));
       const isEmpty = await ProductModel.findOne({ productHash });
       if (isEmpty) throw new Error("product already exist");
