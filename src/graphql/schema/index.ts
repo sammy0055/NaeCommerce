@@ -7,7 +7,6 @@ zipCode:String
 `;
 
 const MerchantProfile = `
-email:String
 firstName:String
 lastName:String
 productTypes:[String]

@@ -1,3 +1,5 @@
+import { CognitoAccessTokenPayload } from "aws-jwt-verify/jwt-model";
+
 export enum Result {
   Success = "SUCCESS",
   Fail = "FAILED",
@@ -19,8 +21,12 @@ export interface signUpType {
 }
 
 export interface userAuthAccessDetails {
-  uid: string;
+  uid?: string;
   exp: number;
   accessToken: string;
   refreshToken: string;
+}
+
+export interface contextDetails {
+  token: () => Promise<CognitoAccessTokenPayload>;
 }

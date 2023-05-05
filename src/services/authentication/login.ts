@@ -1,30 +1,33 @@
-import { AuthenticationDetails } from "amazon-cognito-identity-js";
 import { authenticationData, userAuthAccessDetails } from "../../types";
-import { cognitoUserFn } from "../../utils/cognito-user";
+import { poolData } from "../../data/poll-data";
+import { AWS_REGION } from "../../data/poll-data";
+import {
+  CognitoIdentityProviderClient,
+  AdminInitiateAuthCommand,
+} from "@aws-sdk/client-cognito-identity-provider";
 
-export const login = (
+export const login = async (
   authenticationData: authenticationData
 ): Promise<userAuthAccessDetails> => {
-  const Data = {
-    Username: authenticationData.userName,
-    Password: authenticationData.password,
-  };
-  const authenticationDetails = new AuthenticationDetails(Data);
-
-  const cognitoUser = cognitoUserFn(authenticationData.userName);
-
-  return new Promise((resolve, reject) => {
-    cognitoUser.authenticateUser(authenticationDetails, {
-      onSuccess: function (result) {
-        const res: userAuthAccessDetails = {
-          exp: result.getAccessToken().payload.exp,
-          uid: result.getAccessToken().payload.sub,
-          accessToken: result.getAccessToken().getJwtToken(),
-          refreshToken: result.getRefreshToken().getToken(),
-        };
-        resolve(res);
-      },
-      onFailure: (error) => reject(error),
-    });
+  const cognitoClient = new CognitoIdentityProviderClient({
+    region: AWS_REGION,
   });
+
+  const command = new AdminInitiateAuthCommand({
+    AuthFlow: "ADMIN_NO_SRP_AUTH",
+    ClientId: poolData.ClientId,
+    UserPoolId: poolData.UserPoolId,
+    AuthParameters: {
+      USERNAME: authenticationData.userName,
+      PASSWORD: authenticationData.password,
+    },
+  });
+
+  const { AuthenticationResult } = await cognitoClient.send(command);
+
+  return {
+    exp: AuthenticationResult?.ExpiresIn as number,
+    accessToken: AuthenticationResult?.AccessToken as string,
+    refreshToken: AuthenticationResult?.RefreshToken as string,
+  };
 };

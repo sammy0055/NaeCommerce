@@ -1,24 +1,26 @@
 import { MarchantProfileModel } from "../../mongoDB/schema";
 import { IMerchantProfile } from "../../mongoDB/types";
-import { Result } from "../../types";
-
+import { getCognitoUser } from "../../services/authentication/get-cognito-user";
+import { Result, contextDetails } from "../../types";
 type Profile = {
-  merchantProfile: IMerchantProfile;
+  merchantProfile: Omit<IMerchantProfile, "email" | "sub">;
 };
 
 export const create_merchant_profile = async (
-  _: any,
-  args: Profile
+  _: unknown,
+  args: Profile,
+  contextValue: contextDetails
 ): Promise<string> => {
   try {
+    const token = await contextValue.token();
+    const response = await getCognitoUser(token.username);
     await MarchantProfileModel.findOneAndUpdate(
-      { email: args.merchantProfile.uid }, // Search criteria
-      args.merchantProfile, // Update document
+      { email: response.email }, // Search criteria
+      { ...args.merchantProfile, sub: token.sub }, // Update document
       { upsert: true, new: true } // Options
     );
     return Result.Success;
   } catch (error: any) {
-    console.log("error", error?.message);
     return error?.message;
   }
 };

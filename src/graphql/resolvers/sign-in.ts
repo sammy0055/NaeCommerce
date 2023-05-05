@@ -6,12 +6,11 @@ type Login = {
   authenticationData: authenticationData;
 };
 export const sign_in = async (
-  _: any,
+  _: unknown,
   { authenticationData }: Login
 ): Promise<userAuthAccessDetails> => {
   try {
-    const res = await login(authenticationData);
-    return res;
+    return await login(authenticationData);
   } catch (error: any) {
     logger(error);
     return error?.message;

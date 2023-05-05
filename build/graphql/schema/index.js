@@ -8,7 +8,6 @@ country:String
 zipCode:String
 `;
 const MerchantProfile = `
-email:String
 firstName:String
 lastName:String
 productTypes:[String]
@@ -22,7 +21,7 @@ name: String
 type: String
 `;
 const Product = `
-name: String!
+title: String!
 inStock: Boolean
 gallery: [String]
 description: String!

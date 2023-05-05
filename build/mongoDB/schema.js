@@ -10,7 +10,7 @@ const Address = new mongoose_1.Schema({
     zipCode: { type: String },
 });
 const MerchantProfileSchema = new mongoose_1.Schema({
-    uid: { type: String, required: false },
+    sub: { type: String, required: false },
     email: { type: String, required: true },
     firstName: { type: String, required: false },
     lastName: { type: String, required: false },
@@ -29,21 +29,17 @@ const Attribute = new mongoose_1.Schema({
     displayValue: { type: String, required: false },
     value: { type: String, required: false },
 });
-const Price = new mongoose_1.Schema({
-    currency: { type: String, required: true },
-    amount: { type: Number, required: true },
-});
 const ProductSchema = new mongoose_1.Schema({
-    ownerId: {
+    storeId: {
         type: mongoose_1.Schema.Types.ObjectId,
-        ref: "MerchantProfile",
+        ref: "Store",
         required: true,
     },
-    name: { type: String, required: true },
-    inStock: { type: Boolean, required: true },
-    gallery: { type: [String], required: true },
-    description: { type: String, required: true },
-    category: { type: String, required: true },
+    title: { type: String, required: false },
+    inStock: { type: Boolean, required: false },
+    gallery: { type: [String], required: false },
+    description: { type: String, required: false },
+    category: { type: String, required: false },
     attributes: {
         type: new mongoose_1.Schema({
             name: String,
@@ -52,7 +48,7 @@ const ProductSchema = new mongoose_1.Schema({
         }),
         required: false,
     },
-    prices: { type: [Price], required: true },
+    price: { type: Number, required: false },
     brand: { type: String, required: false },
 });
 const ProductCategorySchema = new mongoose_1.Schema({

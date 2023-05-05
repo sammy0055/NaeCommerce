@@ -14,8 +14,7 @@ const login_1 = require("../../services/authentication/login");
 const logger_1 = require("../../utils/logger");
 const sign_in = (_, { authenticationData }) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const res = yield (0, login_1.login)(authenticationData);
-        return res;
+        return yield (0, login_1.login)(authenticationData);
     }
     catch (error) {
         (0, logger_1.logger)(error);

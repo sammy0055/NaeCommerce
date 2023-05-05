@@ -17,7 +17,7 @@ const runServer = async () => {
       token: async () => {
         const token = req.headers.authorization || "";
         const payload = await verifyAccessToken(token);
-        return { token: payload };
+        return payload;
       },
     }),
     listen: { port: 4000 },

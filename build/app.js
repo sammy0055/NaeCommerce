@@ -28,7 +28,7 @@ const runServer = () => __awaiter(void 0, void 0, void 0, function* () {
                 token: () => __awaiter(void 0, void 0, void 0, function* () {
                     const token = req.headers.authorization || "";
                     const payload = yield (0, verify_access_token_1.verifyAccessToken)(token);
-                    return { token: payload };
+                    return payload;
                 }),
             });
         }),

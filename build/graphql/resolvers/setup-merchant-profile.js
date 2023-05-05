@@ -11,17 +11,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.create_merchant_profile = void 0;
 const schema_1 = require("../../mongoDB/schema");
+const get_cognito_user_1 = require("../../services/authentication/get-cognito-user");
 const types_1 = require("../../types");
-const create_merchant_profile = (_, args) => __awaiter(void 0, void 0, void 0, function* () {
+const create_merchant_profile = (_, args, contextValue) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield schema_1.MarchantProfileModel.findOneAndUpdate({ email: args.merchantProfile.uid }, // Search criteria
-        args.merchantProfile, // Update document
+        const token = yield contextValue.token();
+        const response = yield (0, get_cognito_user_1.getCognitoUser)(token.username);
+        yield schema_1.MarchantProfileModel.findOneAndUpdate({ email: response.email }, Object.assign(Object.assign({}, args.merchantProfile), { sub: token.sub }), // Update document
         { upsert: true, new: true } // Options
         );
         return types_1.Result.Success;
     }
     catch (error) {
-        console.log("error", error === null || error === void 0 ? void 0 : error.message);
         return error === null || error === void 0 ? void 0 : error.message;
     }
 });

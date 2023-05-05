@@ -12,7 +12,7 @@ interface Address {
   zipCode: string;
 }
 interface IMerchantProfile extends Document {
-  uid: String;
+  sub: String;
   email: string;
   firstName: string;
   lastName: string;
