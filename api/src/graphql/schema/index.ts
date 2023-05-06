@@ -143,7 +143,7 @@ enum ResponseStatus {
   }
 
   type MerchantModeMutation {
-    addProduct(product: ProductInput!): ResponseStatus #Product
+    addProduct(product: ProductInput!): Product
   }
 
   type Query {
