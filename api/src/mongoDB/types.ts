@@ -22,6 +22,8 @@ interface IMerchantProfile extends Document {
 interface IStore extends Document {
   MerchantProfileId: ObjectId;
   name: string;
+  region: string;
+  currency: string;
 }
 
 interface Attribute extends Document {

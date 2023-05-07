@@ -27,6 +27,8 @@ const StoreSchema: Schema = new Schema<IStore>({
     required: true,
   },
   name: { type: String, required: true },
+  region: { type: String, required: true },
+  currency:{ type: String, required: true }
 });
 
 const Attribute = new Schema({

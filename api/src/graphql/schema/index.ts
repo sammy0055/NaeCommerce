@@ -24,7 +24,6 @@ type: String
 
 const Product = `
 title: String!
-gallery: [String]!
 description: String!
 category: String!
 brand: String
@@ -123,11 +122,6 @@ enum ResponseStatus {
     symbol: String!
   }
 
-  input PriceInput {
-    currency: CurrencyInput!,
-    amount: Float!
-  }
-
   input AttributeInput {
     ${Attribute}
   }
@@ -138,18 +132,18 @@ enum ResponseStatus {
   }
 
   input ProductInput {
-    storesId: UniqueID
-    data: ProductDataInput
+    storeId: UniqueID
+    data: ProductDataInput!
   }
 
   input ProductDataInput {
     attributes: [AttributeSetInput]
-    price: PriceInput!
+    price: Float!
     ${Product}
   }
 
   type MerchantModeMutation {
-    addProduct(product: ProductInput!): Product
+    addProduct(product: ProductInput!): ResponseStatus #Product
   }
 
   type Query {
