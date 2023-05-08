@@ -21,7 +21,7 @@ interface IMerchantProfile extends Document {
 }
 
 interface IStore extends Document {
-  ownerId: ObjectId;
+  MerchantProfileId: ObjectId;
   name: string;
 }
 

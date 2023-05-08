@@ -19,7 +19,7 @@ const MerchantProfileSchema: Schema = new Schema<IMerchantProfile>({
 });
 
 const StoreSchema: Schema = new Schema<IStore>({
-  ownerId: {
+  MerchantProfileId: {
     type: Schema.Types.ObjectId,
     ref: "MerchantProfile",
     required: true,
