@@ -154,6 +154,7 @@ enum ResponseStatus {
     resendEmailConfirmationCode(userName: String): ResponseStatus
     forgotPassword(userName: String): ResponseStatus
     merchantProfile(merchantProfile: MerchantProfileInput): ResponseStatus
+    merchantStore(name: String): ResponseStatus
     addProduct(product: ProductInput!): Product
   }
 `;

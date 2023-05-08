@@ -10,6 +10,7 @@ const Address = new Schema<Address>({
 });
 
 const MerchantProfileSchema: Schema = new Schema<IMerchantProfile>({
+  _id: { type: Schema.Types.ObjectId, required: false },
   sub: { type: String, required: false },
   email: { type: String, required: true },
   firstName: { type: String, required: false },
