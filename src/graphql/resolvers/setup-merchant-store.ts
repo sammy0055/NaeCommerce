@@ -12,10 +12,14 @@ export const create_merchant_store = async (
     const merchantProfile = await MarchantProfileModel.findOne({
       sub: token.sub,
     }).select("_id");
-    await StoreModel.create({ MerchantProfileId: merchantProfile._id, name });
+    await StoreModel.findOneAndUpdate(
+      { name },
+      { MerchantProfileId: merchantProfile._id, name },
+      { upsert: true }
+    );
     return Result.Success;
   } catch (error: any) {
-      logger(error);  
+    logger(error);
     return Result.Fail;
   }
 };
