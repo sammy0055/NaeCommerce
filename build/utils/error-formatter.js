@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.cognitoErrors = void 0;
-const cognitoErrors = (errCode) => {
+const cognitoErrors = (errCode, message) => {
     let error;
     switch (errCode) {
         case "UsernameExistsException":

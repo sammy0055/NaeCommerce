@@ -8,6 +8,7 @@ const add_product_1 = require("./add-product");
 const forgot_password_1 = require("./forgot-password");
 const send_email_verificationCode_1 = require("./send-email-verificationCode");
 const setup_merchant_profile_1 = require("./setup-merchant-profile");
+const setup_merchant_store_1 = require("./setup-merchant-store");
 const sign_in_1 = require("./sign-in");
 const sign_up_1 = require("./sign-up");
 const verify_email_1 = require("./verify-email");
@@ -21,6 +22,7 @@ const Mutation = {
     resendEmailConfirmationCode: send_email_verificationCode_1.resend_confirmationCode,
     forgotPassword: forgot_password_1.forgot_password,
     merchantProfile: setup_merchant_profile_1.create_merchant_profile,
+    merchantStore: setup_merchant_store_1.create_merchant_store,
     addProduct: add_product_1.add_product,
 };
 exports.default = { Query, Mutation };

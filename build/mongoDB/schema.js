@@ -10,15 +10,17 @@ const Address = new mongoose_1.Schema({
     zipCode: { type: String },
 });
 const MerchantProfileSchema = new mongoose_1.Schema({
+    _id: { type: mongoose_1.Schema.Types.ObjectId, required: false },
     sub: { type: String, required: false },
     email: { type: String, required: true },
     firstName: { type: String, required: false },
     lastName: { type: String, required: false },
     productTypes: { type: [String], required: false },
     address: { type: Address, required: false },
+    storesId: { type: [mongoose_1.Schema.Types.ObjectId], required: false, default: [] }
 });
 const StoreSchema = new mongoose_1.Schema({
-    ownerId: {
+    MerchantProfileId: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: "MerchantProfile",
         required: true,

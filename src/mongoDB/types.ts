@@ -19,6 +19,7 @@ interface IMerchantProfile extends Document {
   lastName: string;
   productTypes: string[];
   address: Address;
+  storesId: ObjectId;
 }
 
 interface IStore extends Document {

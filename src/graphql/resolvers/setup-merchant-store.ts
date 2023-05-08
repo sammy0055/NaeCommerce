@@ -9,14 +9,25 @@ export const create_merchant_store = async (
 ): Promise<string> => {
   try {
     const token = await contextValue.token();
-    const merchantProfile = await MarchantProfileModel.findOne({
-      sub: token.sub,
-    }).select("_id");
-    await StoreModel.findOneAndUpdate(
+    const merchantProfile = await MarchantProfileModel.findOne(
+      {
+        sub: token.sub,
+      },
+      { _id: 1 }
+    ).lean();
+    if (!merchantProfile) return Result.Fail;
+    const storeId = await StoreModel.findOneAndUpdate(
       { name },
       { MerchantProfileId: merchantProfile._id, name },
-      { upsert: true }
+      { upsert: true, setDefaultsOnInsert: true, new: true }
+    )
+      .select("_id")
+      .lean();
+    await MarchantProfileModel.updateOne(
+      { sub: token.sub },
+      { $addToSet: { storesId: storeId._id } }
     );
+
     return Result.Success;
   } catch (error: any) {
     logger(error);
