@@ -1,13 +1,11 @@
 import { MarchantProfileModel } from "../../../mongoDB/schema";
 import { IMerchantProfile } from "../../../mongoDB/types";
-import { contextDetails } from "../../../types";
+import { SubResolverArgs, contextDetails } from "../../../types";
 import { logger } from "../../../utils/logger";
 import { addProduct } from "../merchant-product/add-product";
 
 const validateMerchant = (
-  resolver: (
-    merchantProfile: Pick<IMerchantProfile, "_id" | "storesId">
-  ) => unknown
+  resolver: (merchantProfile: SubResolverArgs) => unknown
 ) => {
   try {
     return async (_: unknown, __: unknown, contextValue: contextDetails) => {

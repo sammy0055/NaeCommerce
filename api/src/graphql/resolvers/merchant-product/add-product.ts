@@ -1,14 +1,11 @@
-import { IMerchantProfile } from "../../../mongoDB/types";
-import { Product, Result } from "../../../types";
+import { Product, Result, SubResolverArgs } from "../../../types";
 import { logger } from "../../../utils/logger";
 
 interface ProductArgs {
   product: Product;
 }
 
-export const addProduct = (
-  merchantPtofile: Pick<IMerchantProfile, "_id" | "storesId">
-) => {
+export const addProduct = (merchantPtofile: SubResolverArgs) => {
   return async (args: ProductArgs) => {
     try {
       console.log("====================================");

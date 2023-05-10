@@ -1,5 +1,5 @@
 import { CognitoAccessTokenPayload } from "aws-jwt-verify/jwt-model";
-import { IProduct, ObjectId } from "../mongoDB/types";
+import { IMerchantProfile, IProduct, ObjectId } from "../mongoDB/types";
 
 export enum Result {
   Success = "SUCCESS",
@@ -37,3 +37,5 @@ export interface Product {
   storeId: ObjectId;
   data: Omit<IProduct, "storeId">;
 }
+
+export type SubResolverArgs = Pick<IMerchantProfile, "_id" | "storesId">
