@@ -11,7 +11,7 @@ interface MyContext {
 }
 export const server = new ApolloServer<MyContext>({ typeDefs, resolvers });
 
-const runServer = async () => {
+export const runServer = async () => {
   const { url } = await startStandaloneServer(server, {
     context: async ({ req }) => ({
       token: async () => {
@@ -22,7 +22,8 @@ const runServer = async () => {
     }),
     listen: { port: 4000 },
   });
-  console.log(`🚀  Server ready at ${url}`);
+  //console.log(`🚀  Server ready at ${url}`);
+  return url
 };
 
 connectDB();
