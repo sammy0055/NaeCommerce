@@ -12,4 +12,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Call the reusable workflow
-        uses: api/.github/workflows/template.yml
+        uses: actions/checkout@v2
+        uses: ./api/.github/workflows/template.yml
