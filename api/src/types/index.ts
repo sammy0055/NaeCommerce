@@ -6,6 +6,7 @@ export enum Result {
 }
 
 export type errorTypes = {
+  name?:string
   message: string;
   code: string;
 };
