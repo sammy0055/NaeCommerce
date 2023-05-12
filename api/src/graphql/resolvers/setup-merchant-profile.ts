@@ -1,7 +1,7 @@
 import { MarchantProfileModel } from "../../mongoDB/schema";
 import { IMerchantProfile } from "../../mongoDB/types";
 import { getCognitoUser } from "../../services/authentication/get-cognito-user";
-import { Result, contextDetails, errorTypes } from "../../types";
+import { Result, contextDetails } from "../../types";
 type Profile = {
   merchantProfile: Omit<IMerchantProfile, "email" | "sub">;
 };
