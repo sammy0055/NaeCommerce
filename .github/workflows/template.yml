@@ -12,4 +12,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Call the reusable workflow
-        uses: ./.github/workflows/template.yml
+        uses: ./api/.github/workflows/template.yml
