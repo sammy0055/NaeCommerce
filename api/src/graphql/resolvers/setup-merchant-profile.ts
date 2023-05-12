@@ -1,7 +1,7 @@
 import { MarchantProfileModel } from "../../mongoDB/schema";
 import { IMerchantProfile } from "../../mongoDB/types";
 import { getCognitoUser } from "../../services/authentication/get-cognito-user";
-import { Result, contextDetails } from "../../types";
+import { Result, contextDetails, errorTypes } from "../../types";
 type Profile = {
   merchantProfile: Omit<IMerchantProfile, "email" | "sub">;
 };
@@ -20,7 +20,8 @@ export const create_merchant_profile = async (
       { upsert: true, new: true } // Options
     );
     return Result.Success;
-  } catch (error: any) {
-    return error?.message;
+  } catch (error) {
+    if (error instanceof TypeError) return error?.message;
+    else return Result.Fail;
   }
 };
