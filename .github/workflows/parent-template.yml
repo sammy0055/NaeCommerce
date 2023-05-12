@@ -10,4 +10,8 @@ on:
 jobs:
   call-workflow-passing-data:
     runs-on: ubuntu-latest
-    uses: ./api/.github/workflows/template.yml
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - uses: ./api/.github/workflows/template.yml
