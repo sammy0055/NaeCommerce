@@ -11,5 +11,7 @@ jobs:
   call-workflow-passing-data:
     runs-on: ubuntu-latest
     steps:
-      - name: Call the reusable workflow
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
         uses: ./api/.github/workflows/template.yml
