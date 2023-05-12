@@ -9,5 +9,5 @@ on:
 
 jobs:
   call-workflow-passing-data:
-    - uses: actions/checkout@v3
-    - uses: ./api/.github/workflows/template.yml
+    uses: actions/checkout@v3
+    uses: ./api/.github/workflows/template.yml
