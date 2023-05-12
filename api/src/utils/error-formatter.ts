@@ -1,6 +1,6 @@
 import { errorTypes } from "../types";
 
-export const cognitoErrors = (errCode: string, message?:string): errorTypes => {
+export const cognitoErrors = (errCode: string): errorTypes => {
   let error: errorTypes;
   switch (errCode) {
     case "UsernameExistsException":

@@ -28,7 +28,7 @@ export function signUp(email: string, password: string): Promise<CognitoUser> {
         if (err) {
           reject(err);
         } else {
-          const cognitoUser = result?.user!;
+          const cognitoUser = result?.user;
           resolve(cognitoUser!);
         }
       }

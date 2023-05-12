@@ -31,11 +31,6 @@ category: String!
 brand: String
 `;
 
-const inputFields = (fieldsSpec: string): string =>
-  fieldsSpec.replace(/%Input%/g, "Input");
-const typeFields = (fieldsSpec: string): string =>
-  fieldsSpec.replace(/%Input%/g, "");
-
 const typeDefs = `#graphql
 
 enum ResponseStatus {

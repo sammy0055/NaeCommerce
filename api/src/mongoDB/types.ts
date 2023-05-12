@@ -1,7 +1,4 @@
 import { Schema, Document } from "mongoose";
-type SpecificProductTypes = Array<
-  "dropshipping-product" | "handmade-product" | "stringThree"
->;
 type ObjectId = Schema.Types.ObjectId;
 
 interface Address {
@@ -13,7 +10,7 @@ interface Address {
 }
 interface IMerchantProfile extends Document {
   _id: ObjectId;
-  sub: String;
+  sub: string;
   email: string;
   firstName: string;
   lastName: string;

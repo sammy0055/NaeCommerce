@@ -7,7 +7,7 @@ import connectDB from "./mongoDB";
 import { verifyAccessToken } from "./services/authentication/verify-access-token";
 
 interface MyContext {
-  token?: String;
+  token?: string;
 }
 export const server = new ApolloServer<MyContext>({ typeDefs, resolvers });
 

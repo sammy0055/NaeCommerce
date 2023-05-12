@@ -9,7 +9,7 @@ type verifyEmail = {
 };
 
 export const verify_email = async (
-  _: any,
+  _: unknown,
   { verificationData }: verifyEmail
 ): Promise<string> => {
   try {

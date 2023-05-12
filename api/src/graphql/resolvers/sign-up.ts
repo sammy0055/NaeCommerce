@@ -7,7 +7,7 @@ interface signUpTypes {
   data: signUpType;
 }
 
-export const sign_up = async (_: any, { data }: signUpTypes) => {
+export const sign_up = async (_: unknown, { data }: signUpTypes) => {
   try {
     const cognitoUser = await signUp(data.email, data.password);
     const email = cognitoUser.getUsername();
