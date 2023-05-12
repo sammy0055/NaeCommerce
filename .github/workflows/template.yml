@@ -9,4 +9,5 @@ on:
 
 jobs:
   call-workflow-passing-data:
+    runs-on: ubuntu-latest
     uses: ./api/.github/workflows/template.yml
