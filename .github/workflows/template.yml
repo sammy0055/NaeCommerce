@@ -13,4 +13,6 @@ jobs:
     steps:
       - name: Call the reusable workflow
         uses: actions/checkout@v2
+          with:
+            submodules: recursive
         uses: ./api/.github/workflows/template.yml
