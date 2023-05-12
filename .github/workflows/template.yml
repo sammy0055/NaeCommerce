@@ -9,4 +9,7 @@ on:
 
 jobs:
   call-workflow-passing-data:
-    uses: ./api/.github/workflows/template.yml
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call the reusable workflow
+        uses: ./.github/workflows/template.yml
