@@ -32,7 +32,7 @@ brand: String
 `;
 
 const typeDefs = `#graphql
-
+scalar UniqueID
 enum ResponseStatus {
   SUCCESS
   FAILED
@@ -129,9 +129,18 @@ enum ResponseStatus {
   }
 
   input ProductInput {
+    storesId: UniqueID
+    data: ProductDataInput
+  }
+
+  input ProductDataInput {
     attributes: [AttributeSetInput]
     price: PriceInput!
     ${Product}
+  }
+
+  type MerchantModeMutation {
+    addProduct(product: ProductInput!): Product
   }
 
   type Query {
@@ -150,7 +159,7 @@ enum ResponseStatus {
     forgotPassword(userName: String): ResponseStatus
     merchantProfile(merchantProfile: MerchantProfileInput): ResponseStatus
     merchantStore(name: String): ResponseStatus
-    addProduct(product: ProductInput!): Product
+    merchantMode: MerchantModeMutation
   }
 `;
 

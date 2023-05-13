@@ -1,6 +1,7 @@
 import books from "../../data/book";
-import { add_product } from "./add-product";
+import { uniqueIDScalar } from "../Scalars";
 import { forgot_password } from "./forgot-password";
+import { merchant_mode_parent_resolver } from "./mode/merchant-mode";
 import { resend_confirmationCode } from "./send-email-verificationCode";
 import { create_merchant_profile } from "./setup-merchant-profile";
 import { create_merchant_store } from "./setup-merchant-store";
@@ -20,7 +21,10 @@ const Mutation = {
   forgotPassword: forgot_password,
   merchantProfile: create_merchant_profile,
   merchantStore: create_merchant_store,
-  addProduct: add_product,
+  merchantMode: merchant_mode_parent_resolver,
 };
 
-export default { Query, Mutation };
+const Scalars = {
+  UniqueID: uniqueIDScalar,
+};
+export default { ...Scalars, Query, Mutation };

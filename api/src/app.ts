@@ -23,7 +23,7 @@ export const runServer = async () => {
     listen: { port: 4000 },
   });
   //console.log(`🚀  Server ready at ${url}`);
-  return url
+  return url;
 };
 
 connectDB();

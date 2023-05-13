@@ -1,5 +1,5 @@
 import { Schema, Document } from "mongoose";
-type ObjectId = Schema.Types.ObjectId;
+export type ObjectId = Schema.Types.ObjectId;
 
 interface Address {
   street: string;
