@@ -24,12 +24,18 @@ type: String
 
 const Product = `
 title: String!
-inStock: Boolean
 gallery: [String]
 description: String!
 category: String!
 brand: String
 `;
+
+// const removeInputValues = (values: string) => {
+//   const lines = values.split("\n");
+//   const newValue = lines
+//     .filter((value) => !value.includes("%input%"))
+//     .join("\n");
+// };
 
 const typeDefs = `#graphql
 scalar UniqueID
@@ -68,6 +74,7 @@ enum ResponseStatus {
     _id: String!,
     attributes: [AttributeSet]
     price: Price!
+    inStock: Boolean
     ${Product}
   }
 
