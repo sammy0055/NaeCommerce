@@ -24,10 +24,12 @@ type: String
 
 const Product = `
 title: String!
-gallery: [String]
+gallery: [String]!
 description: String!
 category: String!
 brand: String
+quantity: Int!
+active: Boolean!
 `;
 
 // const removeInputValues = (values: string) => {
@@ -132,7 +134,6 @@ enum ResponseStatus {
 
   input AttributeSetInput {
     items: [AttributeInput]
-    ${AttributeSet}
   }
 
   input ProductInput {
