@@ -70,6 +70,7 @@ enum ResponseStatus {
     _id: UniqueID!,
     attributes: [AttributeSet]
     price: Float!
+    gallery: [String]
     inStock: Boolean
     ${Product}
   }
@@ -93,17 +94,17 @@ enum ResponseStatus {
     title: String!
   }
 
-  input Register {
+  input RegisterInput {
     email: String
     password: String
   }
 
-  input AuthenticationData {
+  input AuthenticationDataInput {
     userName: String
     password: String
   }
 
-  input VerifyEmail {
+  input VerifyEmailInput {
     userName: String
     authCode: String
   }
@@ -155,9 +156,9 @@ enum ResponseStatus {
   }
 
   type Mutation {
-    signUp(data: Register): ResponseStatus
-    signIn(authenticationData: AuthenticationData): UserAuthAccessDetails
-    verifyEmail(verificationData: VerifyEmail): ResponseStatus
+    signUp(data: RegisterInput): ResponseStatus
+    signIn(authenticationData: AuthenticationDataInput): UserAuthAccessDetails
+    verifyEmail(verificationData: VerifyEmailInput): ResponseStatus
     resendEmailConfirmationCode(userName: String): ResponseStatus
     forgotPassword(userName: String): ResponseStatus
     merchantProfile(merchantProfile: MerchantProfileInput): ResponseStatus

@@ -12,20 +12,16 @@ export const addProduct = (merchantPtofile: SubResolverArgs) => {
       (item) => item === product.storeId
     );
     try {
-      // if (!storeId) throw new Error("store does not exist");
+       if (!storeId) throw new Error("merchant store does not exist");
       const result = await ProductModel.create({
         ...product.data,
         storeId: product.storeId,
       });
-      const { storeId, ...rest } = await result.populate("storeId", "name");
-      const data = {
-        currency: storeId.name,
-        data: { ...rest._doc },
+      const Product = await result.populate("storeId", "currency");
+      return {
+        currency: Product.storeId.currency,
+        data: Product,
       };
-      console.log("====================================");
-      console.log(data);
-      console.log("====================================");
-      return data;
     } catch (error: any) {
       logger(error);
     }
