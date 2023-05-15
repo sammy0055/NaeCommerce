@@ -1,4 +1,5 @@
 import { CognitoAccessTokenPayload } from "aws-jwt-verify/jwt-model";
+import { IProduct, ObjectId } from "../mongoDB/types";
 
 export enum Result {
   Success = "SUCCESS",
@@ -30,4 +31,9 @@ export interface userAuthAccessDetails {
 
 export interface contextDetails {
   token: () => Promise<CognitoAccessTokenPayload>;
+}
+
+export interface Product {
+  storeId: ObjectId;
+  data: Omit<IProduct, "storeId">;
 }

@@ -134,6 +134,7 @@ enum ResponseStatus {
 
   input AttributeSetInput {
     items: [AttributeInput]
+    ${AttributeSet}
   }
 
   input ProductInput {
