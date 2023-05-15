@@ -10,6 +10,9 @@ export const addProduct = (
   merchantPtofile: Pick<IMerchantProfile, "_id" | "storesId">
 ) => {
   return async (args: ProductArgs) => {
+    console.log('====================================');
+    console.log();
+    console.log('====================================');
     try {
     } catch (error: any) {
       logger(error);
