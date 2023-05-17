@@ -153,7 +153,7 @@ enum ResponseStatus {
     books: [Book]
     categories: [Category],
     category(input: CategoryInput): Category
-    product(id: String!): Product
+    product(_id: UniqueID!): Product
     currencies: [Currency]
   }
 

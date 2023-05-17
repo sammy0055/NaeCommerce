@@ -9,13 +9,13 @@ interface ProductArgs {
   product: Product;
 }
 
-export const addProduct = (merchantPtofile: SubResolverArgs) => {
+export const addProduct = (merchantProfile: SubResolverArgs) => {
   return async ({ product }: ProductArgs) => {
-    const storeId = merchantPtofile.storesId.find(
-      (item) => item === product.storeId
+    const storeId = merchantProfile.storesId.find(
+      (item) => item.toString() === product.storeId.toString()
     );
     try {
-      if (!storeId) throw new Error("merchant store doesn't exist, ps");
+      if (!storeId) throw new Error("merchant store doesn't exist");
       const productHash = Base64.stringify(sha256(JSON.stringify(product)));
       const isEmpty = await ProductModel.findOne({ productHash });
       if (isEmpty) throw new Error("product already exist");
