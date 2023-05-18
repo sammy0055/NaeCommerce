@@ -22,6 +22,8 @@ interface IMerchantProfile extends Document {
   productTypes: string[];
   address: Address;
   storesId: ObjectId[];
+  registrationStep: string;
+  completedRegistration: boolean;
 }
 
 interface IStore extends Document {

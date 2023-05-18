@@ -6,6 +6,14 @@ export enum Result {
   Fail = "FAILED",
 }
 
+export enum RegistrationSteps {
+  SIGNUP = "SIGNUP",
+  USERINFO = "USERINFO",
+  NAMESTORE = "NAMESTORE",
+  STORETYPE = "STORETYPE",
+  STOREREGION = "STOREREGION",
+}
+
 export type errorTypes = {
   name?: string;
   message: string;
@@ -38,4 +46,4 @@ export interface Product {
   data: Omit<IProduct, "storeId">;
 }
 
-export type SubResolverArgs = Pick<IMerchantProfile, "_id" | "storesId">
+export type SubResolverArgs = Pick<IMerchantProfile, "_id" | "storesId">;

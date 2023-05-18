@@ -18,6 +18,14 @@ const MerchantProfileSchema: Schema = new Schema<IMerchantProfile>(
     productTypes: { type: [String], required: false },
     address: { type: Address, required: false },
     storesId: { type: [Schema.Types.ObjectId], required: false, default: [] },
+    registrationStep: {
+      type: String,
+      default: String,
+    },
+    completedRegistration: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );

@@ -44,6 +44,14 @@ enum ResponseStatus {
   SUCCESS
   FAILED
 }
+
+enum RegistrationSteps {
+  SIGNUP
+  USERINFO
+  NAMESTORE
+  STORETYPE
+  STOREREGION
+}
   type Book {
     title: String
     author: String
@@ -115,6 +123,7 @@ enum ResponseStatus {
 
   input MerchantProfileInput {
     address:AddressInput
+    registrationStep: RegistrationSteps
     ${MerchantProfile}
   }
 
