@@ -9,7 +9,7 @@ export const logger = (error: errorTypes) => {
     if (tokenExp) _error = { message: "session expired please logIn" };
     else _error = error;
   } else _error = cognitoErrors(error?.code);
-  console.error({ code: error?.code, message: error.message });
+  console.error({ code: error?.code, message: _error.message });
   throw new GraphQLError(_error.message!, {
     extensions: {
       code: error.code,

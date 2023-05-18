@@ -4,23 +4,35 @@ export const cognitoErrors = (errCode: string): errorTypes => {
   let error: errorTypes;
   switch (errCode) {
     case "UsernameExistsException":
-      error = { message: "user already exists", code: "FORBIDDEN" };
+      error = { code: "FORBIDDEN", message: "user already exists" };
       break;
     case "NotAuthorizedException":
       error = {
-        message: "User cannot be confirmed. Current status is CONFIRMED",
         code: "NotAuthorizedException",
+        message: "User cannot be confirmed. Current status is CONFIRMED",
       };
       break;
     case "UserNotConfirmedException":
       error = {
-        message: "User is not confirmed",
         code: "UserNotConfirmedException",
+        message: "User is not confirmed",
+      };
+      break;
+    case "ExpiredCodeException":
+      error = {
+        code: "Invalid code provided",
+        message: "Invalid code provided, please request a code again.",
+      };
+      break;
+    case "ENOTFOUND":
+      error = {
+        code: "no internet conectivity",
+        message: "no conectivity, please check your internet connection",
       };
     default:
       error = {
-        message: "something went wrong please try again",
         code: "UNKWON",
+        message: "something went wrong please try again",
       };
       break;
   }
